@@ -100,11 +100,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%dir %{_docdir}
-%doc %{_docdir}/*
 %dir %{_prefix}
 %if "%{_prefix}" == "/opt/mozjpeg" && "%{_docdir}" != "%{_prefix}/doc"
- %{_prefix}/doc
+%dir %{_docdir}
+%doc %{_docdir}/*
+%else
+%dir %{_prefix}/doc
+%doc %{_prefix}/doc/*
 %endif
 %dir %{_bindir}
 %{_bindir}/cjpeg
